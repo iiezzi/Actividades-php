@@ -77,7 +77,7 @@ $aProductos[] = array("nombre" => "Aire Acondicionado Split Inverter Frío/Calor
                <div class="col-12">
                    <h3>Subtotal: $<?php echo $sumatoria; ?></h3>
                </div>
-           </div>
+        </div>
     </div>
 </body>
 </html>
