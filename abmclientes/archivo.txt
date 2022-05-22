@@ -1,1 +1,1 @@
-[{"dni":"43312557","nombre":"I\u00f1aki Iezzi","telefono":"2236169894","correo":"iezzi.2011@hotmail.com"}]
+[{"dni":"43312557","nombre":"I\u00f1aki Iezzi","telefono":"2236169894","correo":"iezzi.2011@hotmail.com"},{"dni":"46738851","nombre":"Bianca Dimitroff","telefono":"2235361773","correo":"dimitroff.bianca@gmail.com"},{"dni":"11990130","nombre":"Andres Iezzi","telefono":"2234812664","correo":"andres.iezzi@hotmail.com","imagen":""}]
