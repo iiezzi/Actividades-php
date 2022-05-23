@@ -37,13 +37,44 @@ if ($_POST) {
     $correo = $_POST["txtCorreo"];
     $nombreImagen ="";
 
-    $aClientes[] = array(
-        "dni" => $dni,
-        "nombre" => $nombre,
-        "telefono" => $telefono,
-        "correo" => $correo,
-        "imagen" => $nombreImagen
-    );
+    //Insertar imagen y almacenamiento en carpeta
+    if ($_FILES["archivo"]["error"] === UPLOAD_ERR_OK) {
+        $nombreAzar = date("Ymdhmsi") . rand(1000, 2000);
+        $archivo_tmp = $_FILES["archivo"]["tmp_name"];
+        $extension = pathinfo($_FILES["archivo"]["name"], PATHINFO_EXTENSION);
+        if($extension == "jpg" || $extension == "png" || $extension == "jpeg"){
+            $nombreImagen = "$nombreAzar.$extension";
+            move_uploaded_file($archivo_tmp, "imagenes/$nombreImagen");
+        }
+    }
+
+    if($id >= 0){
+            
+        if ($_FILES["archivo"]["error"] !== UPLOAD_ERR_OK) {
+            $nombreImagen = $aClientes[$id]["imagen"];
+         } else {
+            if(file_exists("imagenes/". $aClientes[$id]["imagen"])){ //elimina la imagen anterior , si esta fue editada o cambiada
+                unlink("imagenes/". $aClientes[$id]["imagen"]);
+            }
+         }
+
+        //reescribir la informacion
+        $aClientes[$id] = array("dni" => $dni,
+            "nombre" => $nombre,
+            "telefono" => $telefono,
+            "correo" => $correo,
+            "imagen" => $nombreImagen,
+        );
+    } else{
+        //insercion de un cliente
+        $aClientes[] = array("dni" => $dni,
+            "nombre" => $nombre,
+            "telefono" => $telefono,
+            "correo" => $correo,
+            "imagen" => $nombreImagen,
+        );
+
+    }
 
     //Convierto el array en json
     $strJson = json_encode($aClientes);
