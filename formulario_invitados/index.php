@@ -17,18 +17,18 @@ if ($_POST) {
         if (in_array($nombre, $aInvitados)) {
 
             $aMensaje = array("texto" => "¡Bienvenid@ $nombre disfruta la fiesta!", 
-                              "estado" => "success");
+                              "alerta" => "success");
         } else {
             $aMensaje = array("texto" => "Usted no se encuentra en la lista de invitados.", 
-                              "estado" => "danger");
+                              "alerta" => "danger");
         }
     } else if (isset($_REQUEST['btnVip'])) {
         $respuesta = trim($_REQUEST['txtClave']);
         if ($respuesta == "clave") {
-            $aMensaje = array("texto" => "Su clave VIP es " . rand(1000,9999), "estado" => "success");
+            $aMensaje = array("texto" => "Su clave VIP es " . rand(1000,9999), "alerta" => "success");
 
         } else {
-            $aMensaje = array("texto" => "Usted no tiene pase VIP", "estado" => "danger");
+            $aMensaje = array("texto" => "Usted no tiene pase VIP", "alerta" => "danger");
         }
     }
 }
@@ -51,7 +51,7 @@ if ($_POST) {
         </div>
         <?php if(isset($aMensaje)): ?>
         <div class="col-12">
-            <div class="alert alert-<?php echo $aMensaje["estado"]; ?>" role="alert">
+            <div class="alert alert-<?php echo $aMensaje["alerta"]; ?>" role="alert">
                 <?php echo $aMensaje["texto"]; ?>
             </div>
         </div>
