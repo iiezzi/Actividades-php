@@ -4,14 +4,14 @@ ini_set('display_errors', '1');
 ini_set('display_startup_errors', '1');
 ini_set('error_reporting', E_ALL);
 
-//Lista de invitados
-if(file_exists("invitados.txt")){
-    $aInvitados = explode(",",file_get_contents("invitados.txt"));
-} else {
-    $aInvitados = array();
-}
-
 if ($_POST) {
+    
+    if(file_exists("invitados.txt")){
+        $aInvitados = explode(",",file_get_contents("invitados.txt"));
+    } else {
+        $aInvitados = array();
+    }
+
     if (isset($_REQUEST['btnInvitado'])) {
         $nombre = trim($_REQUEST['txtNombre']);
         if (in_array($nombre, $aInvitados)) {
@@ -71,7 +71,7 @@ if ($_POST) {
                         <input type="text" name="txtClave" class="form-control">
                         <input type="submit" name="btnVip" value="Verificar código" class="btn-dark my-3">
                     </div>
-                </div>
+                </div>                             
             </form>
         </div>
     </div>
