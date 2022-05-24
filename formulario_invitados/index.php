@@ -23,7 +23,7 @@ if ($_POST) {
                               "estado" => "danger");
         }
     } else if (isset($_REQUEST['btnVip'])) {
-        $respuesta = trim($_REQUEST['txtPregunta']);
+        $respuesta = trim($_REQUEST['txtClave']);
         if ($respuesta == "clave") {
             $aMensaje = array("texto" => "Su clave VIP es " . rand(1000,9999), "estado" => "success");
 
@@ -40,18 +40,11 @@ if ($_POST) {
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/fontawesome/css/all.min.css">
-    <link rel="stylesheet" href="css/fontawesome/css/fontawesome.min.css">
-    <link rel="stylesheet" href="css/estilos.css">
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css?family=Montserrat:100,200,300,400,500,600,700,800,900"
-        rel="stylesheet">
     <title>Listado de invitados</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
 </head>
 <body>
-	<main class="container">
+	<main class="container">    
     <div class="row">
         <div class="col-12 py-3 text-center">
             <h1>Lista de invitados</h1>
@@ -73,9 +66,9 @@ if ($_POST) {
                         <p>Ingrese el DNI:<p><input type="text" name="txtNombre" class="form-control">
                         <input type="submit" name="btnInvitado" value="Verificar invitado" class=" btn-dark my-3">
                     </div>
-                    <div class="col-6 bm-3">
+                    <div class="col-6">
                         <p>Ingresa el código secreto para el pase VIP:<p>
-                        <input type="text" name="txtPregunta" class="form-control">
+                        <input type="text" name="txtClave" class="form-control">
                         <input type="submit" name="btnVip" value="Verificar código" class="btn-dark my-3">
                     </div>
                 </div>
