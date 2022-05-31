@@ -77,21 +77,45 @@ class Carrito{
     public function cargarProducto($producto){
           $this->aProductos[] = $producto;
     }
-    public function imprimirTicket(){
-        echo"<table class='table table-hover border' style= 'width:500px'>";
-        echo"<tr><th class='text-center'>ECO MARKET</th></tr>
-             <tr>
+    public function imprimirTicket() {
+        echo "<table class='table table-hover border' style='width:400px'>";
+        echo "<tr><th class='text-center' colspan='2'>ECO MARKET</th></tr>
+              <tr>
                 <th>Fecha</th>
                 <td>" . date("d/m/Y H:i:s") . "</td>
-             </tr>
-             <tr>
+              </tr>
+              <tr>
                 <th>DNI</th>
                 <td>" . $this->cliente->dni . "</td>
-             </tr>
+              </tr>
+              <tr>
+                <th>Nombre</th>
+                <td>" . $this->cliente->nombre . "</td>
+              </tr>
+              <tr>
+                <th colspan='2'>Productos:</th>
+              </tr>";
+              foreach ($this->aProductos as $producto) {
+                echo "<tr>
+                        <td>" . $producto->nombre . "</td>
+                        <td>$ " . number_format($producto->precio, 2, ",", ".") . "</td>
+                      </tr>";
+                $this->subTotal += $producto->precio;
+                $this->total += $producto->precio * (($producto->iva / 100)+1);
+              }
              
-
+        echo "<tr>
+                <th>Subtotal s/IVA:</th>
+                <td>$ " . number_format($this->subTotal, 2, ",", ".") . "</td>
+              </tr>
+            <tr>
+                <th>TOTAL:</th>
+                <td>$ " . number_format($this->total, 2, ",", ".") . "</td>
+              </tr>
+        </table>";
     }
 }
+
 //Programa
 $cliente1 = new Cliente();
 $cliente1->dni = "34765456";
@@ -99,7 +123,7 @@ $cliente1->nombre = "Bernabé";
 $cliente1->correo = "bernabe@gmail.com";
 $cliente1->telefono = "+541188598686";
 $cliente1->descuento = 0.05;
-$cliente1->imprimir();
+//$cliente1->imprimir();
 
 $producto1 = new Producto();
 $producto1->cod = "AB8767";
@@ -107,7 +131,7 @@ $producto1->nombre = "Notebook 15\" HP";
 $producto1->descripcion = "Esta es una computadora HP";
 $producto1->precio = 30800;
 $producto1->iva = 21;
-$producto1->imprimir();
+//$producto1->imprimir();
 
 $producto2 = new Producto();
 $producto2->cod = "QWR579";
@@ -115,7 +139,7 @@ $producto2->nombre = "Heladera Whirlpool";
 $producto2->descripcion = "Esta es una heladera no froze";
 $producto2->precio = 76000;
 $producto2->iva = 10.5;
-$producto2->imprimir();
+//$producto2->imprimir();
 
 $carrito = new Carrito();
 $carrito->cliente = $cliente1;
