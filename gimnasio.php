@@ -107,7 +107,7 @@ class Clase{
     }
 
     public function imprimirListado(){
-        echo "<table class='table table-warning table-bordered'>";
+        echo "<table class='table table-warning table-bordered table-hover'>";
         echo "<tr><th class='table-dark text-center' colspan='4'>Clase: " . $this->nombre . "</th></tr>";
         echo "<tr><th colspan='4'>Entrenador: " . $this->entrenador->nombre . "</th></tr>";
         echo "<tr><th colspan='4'>Alumnos:</th></tr>";
