@@ -3,7 +3,7 @@ ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 
-abstract class Persona {
+class Persona {
     protected $dni;
     protected $nombre;
     protected $correo;
@@ -16,7 +16,12 @@ abstract class Persona {
         $this->celular = $celular;
     }
 
-    abstract public function imprimir();
+    public function imprimir(){
+        echo "DNI:" . $this->dni . "<br>";
+        echo "Nombre:" . $this->nombre . "<br>";
+        echo "Correo:" . $this->correo . "<br>";
+        echo "Celular:" . $this->celular . "<br>";
+    }
 
 }
 
@@ -25,7 +30,7 @@ class Entrenador extends Persona{
     private $aClases;
 
      public function __construct($dni, $nombre, $correo, $celular) {
-        parent::__construct($dni, $nombre, $correo, $celular); //constructor de la clase persona
+        parent::__construct($dni, $nombre, $correo, $celular); //Parent:: Hereda el constructor de la clase persona
         $this->aClases = array();
     }
 
@@ -36,8 +41,6 @@ class Entrenador extends Persona{
     public function __set($propiedad, $valor) {
         $this->$propiedad = $valor;
     }
-
-  
 
      public function imprimir(){
 
@@ -113,7 +116,7 @@ class Clase{
         echo "<tr><th colspan='4'>Alumnos:</th></tr>";
         echo "<tr><th>DNI</th><th>Nombre</th><th>Correo</th><th>Celular</th>";
         foreach($this->aAlumnos as $alumno){
-            echo "<tr><td>" . number_format($alumno->dni, 0, ",", ".") . "</td><td>" . $alumno->nombre . "</td><td>" . $alumno->correo . "</td><td>" . $alumno->celular . "</td></tr>"; 
+            echo "<tr><td>" . $alumno->dni . "</td><td>" . $alumno->nombre . "</td><td>" . $alumno->correo . "</td><td>" . $alumno->celular . "</td></tr>"; 
         }
         echo "</table>";
     }
